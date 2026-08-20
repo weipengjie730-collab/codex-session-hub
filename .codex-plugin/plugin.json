@@ -1,0 +1,18 @@
+{
+  "name": "codex-session-hub",
+  "version": "0.1.0",
+  "description": "Local-first Codex multi-session task memory and Obsidian knowledge extraction.",
+  "author": {
+    "name": "淮清"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Codex Session Hub",
+    "shortDescription": "Sync Codex task sessions, handoffs, open questions, and Obsidian knowledge cards.",
+    "longDescription": "A local-first Codex plugin for multi-conversation workflows. It stores task summaries, decisions, open questions, handoffs, and durable knowledge cards as Markdown so other Codex conversations can recover context without reading full chat transcripts.",
+    "developerName": "淮清",
+    "category": "Productivity",
+    "capabilities": ["skills"],
+    "defaultPrompt": "Use session-hub to sync this Codex task, list active sessions, or extract durable knowledge to Obsidian."
+  }
+}
