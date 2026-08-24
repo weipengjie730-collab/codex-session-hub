@@ -1,42 +1,42 @@
-# 小红书 Skill 发布任务
+# 本地 Markdown 工具任务
 
 ## Metadata
 
-- id: xhs-skill
+- id: demo-markdown-tool
 - status: 进行中
-- updated: 2026-08-20T10:00:00
-- project: huaiqing
+- updated: 2026-01-15T10:00:00
+- project: demo-project
 - source: Codex conversation summary
 
 ## Current goal
 
-把小红书热点图文工作流做成可复用 skill，并发布到 GitHub。
+完成一个本地 Markdown 工具，并验证它可以在新环境中安装运行。
 
 ## Progress
 
-- 已生成 `xhs-hotspot-note/SKILL.md`。
-- 已发布到 GitHub 仓库。
-- 已测试生成一篇 Markdown 示例笔记。
+- 已完成核心脚本和基础文档。
+- 已准备 Skill 安装目录。
+- 已生成一份匿名任务记录。
 
 ## Key decisions
 
-- 先做小红书图文，不做抖音。
-- 不使用小红书逆向/Cookie API。
-- 发布环节采用半自动，人点最后发布。
+- 使用本地 Markdown 文件，不接入云端数据库。
+- 只保存用户主动同步的摘要，不保存完整聊天记录。
+- 先验证最小安装流程，再考虑增加更多能力。
 
 ## Open questions
 
-- [ ] 是否加入自动封面生成器？
-- [ ] 是否扩展抖音短视频脚本？
+- [ ] 是否增加安装检查脚本？
+- [ ] 是否增加任务状态筛选？
 
 ## Related files and links
 
-- GitHub: https://github.com/weipengjie730-collab/hhhq
+- Repository: https://github.com/example/demo-project
 
 ## Next actions
 
-- 设计 HTML/CSS 封面生成器。
+- 验证新环境安装流程，并补充失败排查说明。
 
 ## Continue prompt
 
-请读取本 session 文件，恢复“小红书 Skill 发布任务”的上下文，先列出未解决问题，再继续。
+请读取本 session 文件，恢复“本地 Markdown 工具任务”的上下文，先列出未解决问题，再继续。
