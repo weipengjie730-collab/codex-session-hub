@@ -4,6 +4,8 @@
 
 Codex Session Hub is a local-first Codex skill for people who run several Codex tasks in parallel. It saves task state, decisions, open questions, handoffs, and Obsidian-ready knowledge cards as Markdown files, so a later Codex conversation can recover the work without reading your full chat history.
 
+It also includes **Collaboration Profile**, an opt-in companion skill that turns explicitly selected local Codex conversations into a user-approved `AI_WORKING_PROFILE.md`. Session Hub remembers the task; Collaboration Profile remembers how the user prefers to work with AI.
+
 ![Codex Session Hub workflow](assets/session-hub-flow.svg)
 
 ```text
@@ -66,6 +68,23 @@ Say things like:
 ```
 
 The skill will summarize durable state instead of copying raw chat logs.
+
+### Build a collaboration profile
+
+The companion skill never silently reads all chat history. It first lists local sessions so the user can choose representative conversations, then creates a local evidence pack from only those paths.
+
+```bash
+# Inspect candidates; choose 3-10 conversations that represent different tasks.
+python3 skills/collaboration-profile/scripts/collaboration_profile.py index --limit 20
+
+# Create a local, redacted evidence pack from the selected sessions only.
+python3 skills/collaboration-profile/scripts/collaboration_profile.py pack \
+  --session ~/.codex/sessions/.../one.jsonl \
+  --session ~/.codex/sessions/.../two.jsonl \
+  --include-assistant
+```
+
+Then ask Codex: “从这个证据包生成我的 AI 协作画像，并先让我确认每条结论。” The approved result is saved as `AI_WORKING_PROFILE.md` and can guide future conversations.
 
 ## Command-line helper
 
@@ -148,6 +167,8 @@ Initialized hub structure:
 - It does not try to be a full project-management system.
 - It does not use vector search yet.
 
+Collaboration Profile follows the same boundary: it creates a local, reviewable evidence pack only from conversations the user explicitly selected. Its redaction is a safety net, not a guarantee; sensitive conversations should be excluded.
+
 That boundary is deliberate. The first useful version should be easy to inspect, edit, and repair.
 
 ## Obsidian integration
@@ -176,6 +197,10 @@ codex-session-hub/
     └── session-hub/
         ├── SKILL.md
         ├── scripts/session_hub.py
+        └── templates/
+    └── collaboration-profile/
+        ├── SKILL.md
+        ├── scripts/collaboration_profile.py
         └── templates/
 ```
 
